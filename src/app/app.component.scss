@@ -1,0 +1,5 @@
+@import 'shared';
+
+h2{
+  @include setWidth;
+}
