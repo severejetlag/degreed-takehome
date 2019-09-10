@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { OmdbService } from './services/omdb.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [OmdbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
