@@ -11,6 +11,9 @@ export class MovieListComponent implements OnInit {
   constructor(private omdbService: OmdbService) { }
 
   ngOnInit() {
-    this.omdbService.getMovies('batman');
+    this.omdbService.getMovies('batman')
+      .subscribe(data => {
+        console.log(data);
+      });
   }
 }
