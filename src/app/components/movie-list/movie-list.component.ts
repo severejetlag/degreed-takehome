@@ -15,5 +15,10 @@ export class MovieListComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
       });
+
+    this.omdbService.getMovieByID('tt0372784')
+      .subscribe(data => {
+        console.log(data);
+      });
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SearchResponse } from '../models/search-response';
 import { environment } from 'src/environments/environment';
+import { MovieResponse } from '../models/movie-response';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,11 @@ export class OmdbService {
   public getMovies(searchString) {
     const requestURL = this.queryBuilder({s: searchString});
     return this.http.get<SearchResponse>(requestURL);
+  }
+
+  public getMovieByID(id) {
+    const requestURL = this.queryBuilder({i: id});
+    return this.http.get<MovieResponse>(requestURL);
   }
 
   /*
