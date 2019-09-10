@@ -11,7 +11,7 @@ import { SearchResponseItem } from 'src/app/models/search-response-item';
 })
 export class MovieListComponent implements OnInit {
   public decades: object = {};
-  public moviesToDisplay: MovieResponse[];
+  public moviesToDisplay: MovieResponse[] = [];
   public serviceError: any;
 
   private detailedMovieList: any[] = [];
@@ -49,6 +49,7 @@ export class MovieListComponent implements OnInit {
           (data: MovieResponse) => {
             data.decade = decade;
             this.detailedMovieList.push(data);
+            this.moviesToDisplay.push(data);
           },
           error => this.serviceError = error);
     });

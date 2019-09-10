@@ -1,5 +1,5 @@
 export interface SearchResponseItem {
-  title: string;
+  Title: string;
   Year: string;
   imdbID: string;
   Type: string;
