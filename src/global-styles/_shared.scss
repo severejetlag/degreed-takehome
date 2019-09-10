@@ -1,5 +1,10 @@
-@import 'variables';
+/* 
+  File used to implement resuable segments of SCSS code
+  All Mixins and Extensions will be defined here
+*/
 
-@mixin setWidth {
-  width: $width;
-} 
+// Importing all boostrap styles into shared partial to be used in any component
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// Importing viarbles partial to be loaded into any component 
+@import 'variables';

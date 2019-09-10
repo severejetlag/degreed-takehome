@@ -1,5 +1,7 @@
 @import 'shared';
 
-h2{
-  @include setWidth;
+header {
+  background: $blue;
+  color: $white;
+  padding: 20px 0px; 
 }
