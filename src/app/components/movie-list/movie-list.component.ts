@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OmdbService } from 'src/app/services/omdb.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private omdbService: OmdbService) { }
 
   ngOnInit() {
+    this.omdbService.getMovies();
   }
 
 }
