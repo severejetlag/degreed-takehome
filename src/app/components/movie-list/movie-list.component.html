@@ -1,7 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      Decade buttons will go here.
+    <div class="col-auto ml-auto">
+      <nav>
+        <ul>
+          <li>
+            <button (click)="resetFilter()">View All</button>
+          </li>
+          <ng-container *ngIf="decades">
+            <li *ngFor="let decade of decades | keyvalue">
+              <button (click)="filterDecade(decade)">{{decade.key}}s ({{decade.value}})</button>
+            </li>
+          </ng-container>
+        </ul>
+      </nav>
     </div>
   </div>
   <div class="row">
