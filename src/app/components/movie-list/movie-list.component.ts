@@ -22,7 +22,7 @@ export class MovieListComponent implements OnInit {
     Call OMDB API to grab first 10 movies
   */
   private callMoviesService() {
-    this.omdbService.getMovies(this.searchString)
+    this.omdbService.getMovies({s: this.searchString})
       .subscribe(
         (data: SearchResponse) => {
           console.log(data);
@@ -37,9 +37,9 @@ export class MovieListComponent implements OnInit {
   */
   private getMovieDetails() {
     this.simpleMovieList.Search.forEach(movie => {
-      this.omdbService.getMovieByID(movie.imdbID)
+      this.omdbService.getMovies({i: movie.imdbID})
         .subscribe(
-          (data: MovieResponse) =>{
+          (data: MovieResponse) => {
             console.log(data);
             this.detailedMovieList.push(data);
           },
