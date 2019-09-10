@@ -21,6 +21,24 @@ export class MovieListComponent implements OnInit {
   constructor(private omdbService: OmdbService) { }
 
   /*
+    Filter display array by selected decade
+    Param: string to use as filter
+  */
+  public filterDecade(decade: string) {
+    this.moviesToDisplay = this.detailedMovieList.filter((movie) => {
+      return this.convertYearToDecade(movie.Year).toString() === decade;
+    });
+  }
+
+  /*
+    Used to reset and display all 10 films regardless of filter.
+    Params: none
+  */
+  public resetFilter() {
+    this.moviesToDisplay = this.detailedMovieList;
+  }
+
+  /*
     Call OMDB API to grab first 10 movies
   */
   private callMoviesService() {
