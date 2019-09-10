@@ -1,14 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-auto ml-auto">
-      <nav>
+      <nav >
         <ul>
           <li>
-            <button (click)="resetFilter()">View All</button>
+            <button [ngClass]="activeYear === 'all' ? 'btn-primary' : 'btn-light'" class="btn" (click)="resetFilter()">
+              View All
+            </button>
           </li>
           <ng-container *ngIf="decades">
             <li *ngFor="let decade of decades | keyvalue">
-              <button (click)="filterDecade(decade.key)">{{decade.key}}s ({{decade.value}})</button>
+              <button [ngClass]="activeYear === decade.key ? 'btn-primary' : 'btn-light'" class="btn" (click)="filterDecade(decade.key)">
+                {{decade.key}}s ({{decade.value}})
+              </button>
             </li>
           </ng-container>
         </ul>

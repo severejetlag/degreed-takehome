@@ -10,6 +10,7 @@ import { SearchResponseItem } from 'src/app/models/search-response-item';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
+  public activeYear = 'all';
   public decades: object = {};
   public moviesToDisplay: MovieResponse[] = [];
   public serviceError: any;
@@ -25,6 +26,7 @@ export class MovieListComponent implements OnInit {
     Param: string to use as filter
   */
   public filterDecade(decade: string) {
+    this.activeYear = decade;
     this.moviesToDisplay = this.detailedMovieList.filter((movie) => {
       return this.convertYearToDecade(movie.Year).toString() === decade;
     });
@@ -35,6 +37,7 @@ export class MovieListComponent implements OnInit {
     Params: none
   */
   public resetFilter() {
+    this.activeYear = 'all';
     this.moviesToDisplay = this.detailedMovieList;
   }
 
