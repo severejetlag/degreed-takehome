@@ -1,6 +1,6 @@
 export interface SearchResponseItem {
   title: string;
-  year: string;
+  Year: string;
   imdbID: string;
   Type: string;
   Poster: string;

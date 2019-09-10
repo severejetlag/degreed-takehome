@@ -12,22 +12,13 @@ export class OmdbService {
   constructor(private http: HttpClient) { }
 
   /*
-    Method to get a list of movies based off of search string
-    Param: accepts search string value
+    Method to get movies from OMDB API based off of options passed
+    Param: accepts params object
   */
   public getMovies(params: object) {
     const requestURL = this.queryBuilder(params);
     return this.http.get<SearchResponse | MovieResponse>(requestURL);
   }
-
-  // /*
-  //   Method to get a specific movie based upon id value
-  //   Param: accepts movie ID as string
-  // */
-  // public getMovieByID(id) {
-  //   const requestURL = this.queryBuilder({i: id});
-  //   return this.http.get<MovieResponse>(requestURL);
-  // }
 
   /*
     Private method to build full URL for API Request

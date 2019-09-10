@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OmdbService } from 'src/app/services/omdb.service';
 import { SearchResponse } from 'src/app/models/search-response';
 import { MovieResponse } from 'src/app/models/movie-response';
+import { SearchResponseItem } from 'src/app/models/search-response-item';
 
 @Component({
   selector: 'app-movie-list',
@@ -9,11 +10,12 @@ import { MovieResponse } from 'src/app/models/movie-response';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
+  public decades: object = {};
   public moviesToDisplay: MovieResponse[];
   public serviceError: any;
 
-  private detailedMovieList: MovieResponse[] = [];
-  private simpleMovieList: SearchResponse;
+  private detailedMovieList: any[] = [];
+  private simpleMovieList: SearchResponseItem[];
   private searchString = 'Batman';
 
   constructor(private omdbService: OmdbService) { }
@@ -25,8 +27,7 @@ export class MovieListComponent implements OnInit {
     this.omdbService.getMovies({s: this.searchString})
       .subscribe(
         (data: SearchResponse) => {
-          console.log(data);
-          this.simpleMovieList = data;
+          this.simpleMovieList = data.Search;
           this.getMovieDetails();
         },
         error => this.serviceError = error);
@@ -36,16 +37,30 @@ export class MovieListComponent implements OnInit {
     Retreievs complete details for movies that were retreived from service
   */
   private getMovieDetails() {
-    this.simpleMovieList.Search.forEach(movie => {
+    this.simpleMovieList.forEach(movie => {
+      const decade = this.convertYearToDecade(movie.Year);
+      if (this.decades.hasOwnProperty(decade)) {
+        this.decades[decade] ++;
+      } else {
+        this.decades[decade] = 1;
+      }
       this.omdbService.getMovies({i: movie.imdbID})
         .subscribe(
           (data: MovieResponse) => {
-            console.log(data);
+            data.decade = decade;
             this.detailedMovieList.push(data);
           },
           error => this.serviceError = error);
     });
-    console.log(this.detailedMovieList);
+  }
+
+  /*
+    Used to convert string year into corresponding decade
+    Param: string representing year
+  */
+  private convertYearToDecade(year: string): number {
+    const numberYear = parseInt(year, 10);
+    return numberYear - (numberYear % 10);
   }
 
   ngOnInit() {

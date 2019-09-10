@@ -29,4 +29,5 @@ export interface MovieResponse {
   production: string;
   website: string;
   response: string;
+  decade?: number;
 }
