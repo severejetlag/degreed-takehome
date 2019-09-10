@@ -11,12 +11,19 @@ export class OmdbService {
 
   constructor(private http: HttpClient) { }
 
-
+  /*
+    Method to get a list of movies based off of search string
+    Param: accepts search string value
+  */
   public getMovies(searchString) {
     const requestURL = this.queryBuilder({s: searchString});
     return this.http.get<SearchResponse>(requestURL);
   }
 
+  /*
+    Method to get a specific movie based upon id value
+    Param: accepts movie ID as string
+  */
   public getMovieByID(id) {
     const requestURL = this.queryBuilder({i: id});
     return this.http.get<MovieResponse>(requestURL);

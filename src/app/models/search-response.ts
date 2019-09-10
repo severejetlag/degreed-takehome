@@ -1,7 +1,7 @@
 import { SearchResponseItem } from './search-response-item';
 
 export interface SearchResponse {
-  search: SearchResponseItem[];
+  Search: SearchResponseItem[];
   totalResults: string;
   response: string;
 }

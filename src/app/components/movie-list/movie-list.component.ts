@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OmdbService } from 'src/app/services/omdb.service';
+import { SearchResponse } from 'src/app/models/search-response';
+import { MovieResponse } from 'src/app/models/movie-response';
 
 @Component({
   selector: 'app-movie-list',
@@ -7,18 +9,46 @@ import { OmdbService } from 'src/app/services/omdb.service';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
+  public moviesToDisplay: MovieResponse[];
+  public serviceError: any;
+
+  private detailedMovieList: MovieResponse[] = [];
+  private simpleMovieList: SearchResponse;
+  private searchString = 'Batman';
 
   constructor(private omdbService: OmdbService) { }
 
-  ngOnInit() {
-    this.omdbService.getMovies('batman')
-      .subscribe(data => {
-        console.log(data);
-      });
+  /*
+    Call OMDB API to grab first 10 movies
+  */
+  private callMoviesService() {
+    this.omdbService.getMovies(this.searchString)
+      .subscribe(
+        (data: SearchResponse) => {
+          console.log(data);
+          this.simpleMovieList = data;
+          this.getMovieDetails();
+        },
+        error => this.serviceError = error);
+  }
 
-    this.omdbService.getMovieByID('tt0372784')
-      .subscribe(data => {
-        console.log(data);
-      });
+  /*
+    Retreievs complete details for movies that were retreived from service
+  */
+  private getMovieDetails() {
+    this.simpleMovieList.Search.forEach(movie => {
+      this.omdbService.getMovieByID(movie.imdbID)
+        .subscribe(
+          (data: MovieResponse) =>{
+            console.log(data);
+            this.detailedMovieList.push(data);
+          },
+          error => this.serviceError = error);
+    });
+    console.log(this.detailedMovieList);
+  }
+
+  ngOnInit() {
+    this.callMoviesService();
   }
 }
