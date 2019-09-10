@@ -1,6 +1,6 @@
 import { SearchResponseItem } from './search-response-item';
 
-export interface Config {
+export interface SearchResponse {
   search: SearchResponseItem[];
   totalResults: string;
   response: string;
