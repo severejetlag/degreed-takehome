@@ -1,1 +1,45 @@
-<p>{{ movie.Title }}</p>
+<article class="movie" [id]="movie.imdbID">
+  <div class="row">
+    <div class="col-md-2">
+      <img class="movie-poster" [src]="movie.Poster" [alt]="movie.Title">
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-12">
+          <h3>{{movie.Title}}</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-auto col-6">
+          <div class="rated">
+            <p>{{movie.Rated}}</p>
+          </div>
+        </div>
+        <div class="col-md-auto col-6">
+          <div class="runtime">
+            <p>{{movie.Runtime}}</p>
+          </div>
+        </div>
+        <div class="col-md-auto col-sm-12 ml-auto">
+          <div class="release">
+            <p>{{movie.Released}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="plot">
+            <p>{{movie.Plot}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-auto ml-auto">
+          <a href="#" id="imdb-link">
+            <button>View on IMDB</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
