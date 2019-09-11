@@ -1,8 +1,9 @@
 @import 'shared';
 
 .movie{
+  position: relative;
   background: $gray-200;
-  padding: 20px;
+  padding: 15px;
   border-radius: 5px;
   margin: 10px 0;
   border: 1px solid $gray-800;
@@ -12,6 +13,11 @@
     display: none; 
     &.show{
       display:block;
+    }
+  }
+  .movie-content{
+    @include media-breakpoint-up(md){
+      padding: 0px 15px 50px;
     }
   }
   h3.title{
@@ -28,9 +34,21 @@
     color: $gray-600;;
   }
   .plot p{
-    font-size: 1.1  em;
+    font-size: 1.2em;
   }
-  .imdb-link button{
-    color: white;
+  .imdb-link{
+    display: block;
+    @include media-breakpoint-up(md){
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+    }
+    &:hover{
+      text-decoration: none;
+    }
+    button{
+      color: white;
+      text-decoration: none;
+    } 
   }
 }

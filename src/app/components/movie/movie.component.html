@@ -1,10 +1,10 @@
 <article class="movie" [id]="movie.imdbID">
-  <div class="row">
+  <div class="row no-gutters">
     <div class="col-md-3">
       <img [ngClass]="{'show': imageLoadSuccess}" (load)="imageLoad($event)" class="movie-poster" [src]="movie.Poster" [alt]="movie.Title">
       <img [ngClass]="{'show': !imageLoadSuccess}" class="movie-poster" [src]="backupImageFile" [alt]="movie.Title">
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9 movie-content">
       <div class="row">
         <div class="col-12">
           <h3 class="title">{{movie.Title}}</h3>
@@ -34,13 +34,9 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-auto ml-auto">
-          <a target="_blank" [href]="imdbMovieURL" class="imdb-link">
-            <button class="btn btn-warning btn-block">View on IMDB</button>
-          </a>
-        </div>
-      </div>
+      <a target="_blank" [href]="imdbMovieURL" class="imdb-link">
+        <button class="btn btn-warning btn-block">View on IMDB</button>
+      </a>
     </div>
   </div>
 </article>
