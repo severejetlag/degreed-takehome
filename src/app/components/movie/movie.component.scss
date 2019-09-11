@@ -5,7 +5,7 @@
   background: $gray-200;
   padding: 15px;
   border-radius: 5px;
-  margin: 10px 0;
+  margin: 20px 0;
   border: 1px solid $gray-800;
   img.movie-poster{
     border-radius: 5px;
@@ -49,6 +49,8 @@
     button{
       color: white;
       text-decoration: none;
+      padding-right: 30px;
+      padding-left: 30px;
     } 
   }
 }
