@@ -1,3 +1,22 @@
+# Notes: 
+
+## Project Page
+
+Github Pages is being used to host the project so it can be loaded normally, not only using Angular development server. 
+
+Page: [https://severejetlag.github.io/degreed-takehome-page/](https://severejetlag.github.io/degreed-takehome-page/)
+
+## Dev Server
+
+To run the Angular development server, enter the project directory and run: (Make sure node is installed)
+
+```
+$ npm install 
+$ ng serve
+```
+
+Note*: Since this project uses Angular 8, this [bug](https://github.com/angular/angular-cli/issues/14455) seems to prevent loading [http://localhost:4200](http://localhost:4200) in IE11
+
 # Assignment: Front-End Coding Challenge
 
 ## Task

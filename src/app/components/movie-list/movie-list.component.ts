@@ -11,7 +11,7 @@ import { SearchResponseItem } from 'src/app/models/search-response-item';
 })
 export class MovieListComponent implements OnInit {
   public activeYear = 'all';
-  public decades: object = {};
+  public decades: any = {};
   public moviesToDisplay: MovieResponse[] = [];
   public serviceError: any;
 
