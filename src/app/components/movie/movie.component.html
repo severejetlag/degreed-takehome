@@ -1,12 +1,12 @@
 <article class="movie" [id]="movie.imdbID">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3">
       <img class="movie-poster" [src]="movie.Poster" [alt]="movie.Title">
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
       <div class="row">
         <div class="col-12">
-          <h3>{{movie.Title}}</h3>
+          <h3 class="title">{{movie.Title}}</h3>
         </div>
       </div>
       <div class="row">
@@ -34,9 +34,9 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-auto ml-auto">
-          <a target="_blank" [href]="imdbMovieURL" id="imdb-link">
-            <button class="btn btn-primary">View on IMDB</button>
+        <div class="col-md-auto ml-auto">
+          <a target="_blank" [href]="imdbMovieURL" class="imdb-link">
+            <button class="btn btn-warning btn-block">View on IMDB</button>
           </a>
         </div>
       </div>
