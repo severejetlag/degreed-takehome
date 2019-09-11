@@ -45,7 +45,7 @@ export class MovieListComponent implements OnInit {
     Call OMDB API to grab first 10 movies
   */
   private callMoviesService() {
-    this.omdbService.getMovies({s: this.searchString})
+    this.omdbService.getMovies({s: this.searchString, type: 'movie'})
       .subscribe(
         (data: SearchResponse) => {
           this.simpleMovieList = data.Search;
